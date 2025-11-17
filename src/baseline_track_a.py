@@ -19,7 +19,8 @@ from tqdm import tqdm
 # ------------------------------
 baseline = "sbert"  # or "random"
 
-input_file = "../ref/track_a.jsonl"   # Input dataset of triples
+# input_file = "../ref/track_a.jsonl" 
+input_file = "../ref/dev_track_a.jsonl"
 output_file = "../outputs/track_a.jsonl"  # Output predictions for submission
 
 # ------------------------------
@@ -27,7 +28,9 @@ output_file = "../outputs/track_a.jsonl"  # Output predictions for submission
 # ------------------------------
 if baseline == "sbert":
     # Load fine-tuned model from the training step
-    model = SentenceTransformer("../models/fine_tuned_tracka")
+    # model = SentenceTransformer("../models/fine_tuned_tracka")
+    # model = SentenceTransformer("../models/fine_tuned_tracka_v2")
+    model = SentenceTransformer("../models/fine_tuned_synthetic_tracka")
     print("✅ Using fine-tuned model: ../models/fine_tuned_tracka")
 else:
     model = None

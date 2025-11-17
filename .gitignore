@@ -1,24 +1,21 @@
-# Python
+# macOS
+.DS_Store
+
+# virtual env
+.venv/
+
+# model weights
+models/
+*.safetensors
+
+# outputs
+outputs/
+output/
+res/
+
+# python caches
 __pycache__/
 *.pyc
 
-# Virtual environments
-.venv/
-venv/
-env/
-
-# Model weights
-models/
-*.safetensors
-*.pth
-*.bin
-*.pt
-
-# Embeddings
-*.npy
-
-# Outputs
-outputs/
-
-# macOS
-.DS_Store
+# large training data (optional)
+*.zip
