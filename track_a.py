@@ -1,21 +1,3 @@
-"""
-Track A Ultimate System (5-Fold CV + XGBoost Ensemble + Meta-Stacking + BM25)
-
-Features used:
-- SBERT Ensemble Similarity
-- POS Features (noun/verb overlap)
-- TF-IDF Similarity
-- BM25 Similarity
-- Length-based Features
-
-Models:
-1. 5-fold XGBoost models (each trained on a different split)
-2. Logistic Regression meta-classifier (stacked on top of XGBoost outputs)
-
-Output:
-- output/track_a.jsonl
-"""
-
 import numpy as np
 import pandas as pd
 import nltk
