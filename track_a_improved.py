@@ -31,26 +31,21 @@ def predict(row):
             {
                 "role": "system",
                 "content": (
-                    "You are an expert narrative analyst. "
-                    "Your job is to determine whether Story A or Story B is more "
-                    "narratively similar to the Anchor story.\n\n"
-                    "Narrative similarity must be judged using these criteria:\n"
-                    "1. Theme similarity (core ideas, abstract conflict)\n"
-                    "2. Event similarity (sequence of major plot actions)\n"
-                    "3. Outcome similarity (how the story resolves)\n\n"
-                    "You must return a JSON object with:\n"
-                    "- explanation: a brief explanation of your reasoning\n"
-                    "- closer: 'A' or 'B' indicating which is more similar\n"
+                    "You are a classification system. "
+                    "Given an anchor story and two comparison stories, "
+                    "decide which comparison story (A or B) is narratively closer "
+                    "to the anchor.\n\n"
+                    "Return a JSON object with the field 'closer' only, "
+                    "set to either 'A' or 'B'. No explanation."
                 ),
             },
             {
                 "role": "user",
                 "content": (
-                    f"Anchor story:\n{anchor}\n\n"
-                    f"Story A:\n{text_a}\n\n"
-                    f"Story B:\n{text_b}\n\n"
-                    "Compare A and B to the Anchor using theme, events, and outcome. "
-                    "Pick ONLY the most similar one."
+                    f"Anchor: {anchor}\n\n"
+                    f"Story A: {text_a}\n\n"
+                    f"Story B: {text_b}\n\n"
+                    "Which is closer to the anchor? Return only JSON."
                 ),
             },
         ],
@@ -58,7 +53,6 @@ def predict(row):
         temperature=0.0,
     )
 
-    # Return True if A is closer, False otherwise
     return completion.choices[0].message.parsed.closer == ResponseEnum.A
 
 
